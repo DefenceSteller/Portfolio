@@ -71,6 +71,7 @@ export const projects: Project[] = [
     tech: ["Vite", "HeroUI", "Tailwind CSS", "Framer Motion"],
     year: "2026",
     repo: "https://github.com/DefenceSteller/BillBazaar",
+    demo: "https://bill-bazaar.vercel.app/",
   },
   {
     title: "InvestMate",
@@ -81,6 +82,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "REST APIs", "Analytics"],
     year: "2026",
     repo: "https://github.com/DefenceSteller/InvestMate",
+    demo: "https://invest-mate-sitee.vercel.app/",
   },
   {
     title: "QuickCart",
@@ -101,6 +103,7 @@ export const projects: Project[] = [
     tech: ["Vite", "HeroUI", "Swiper", "Framer Motion"],
     year: "2026",
     repo: "https://github.com/DefenceSteller/TechVerse",
+    demo: "https://tech-verse-sigma.vercel.app/",
   },
   {
     title: "FilmBaaz-API",
@@ -110,6 +113,7 @@ export const projects: Project[] = [
     tech: ["REST API", "Recommender System"],
     year: "2026",
     repo: "https://github.com/DefenceSteller/FilmBaaz-API",
+    demo: "https://flimbaaz-frontend.vercel.app/",
   },
   {
     title: "CoLab",

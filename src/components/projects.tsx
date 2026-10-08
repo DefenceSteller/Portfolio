@@ -1,4 +1,4 @@
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Star } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
@@ -70,18 +70,29 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        <div className="relative mt-5 flex items-center justify-between border-t border-white/10 pt-4 text-xs text-muted-foreground/70">
+        <div className="relative mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4 text-xs text-muted-foreground/70">
           <span className="font-mono">{project.year}</span>
           {project.demo ? (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="relative z-10 inline-flex items-center gap-1.5 font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Live demo
-              <ArrowUpRight className="size-3.5" />
-            </a>
+            <div className="relative z-10 flex items-center gap-2">
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-3.5 py-1.5 text-[0.72rem] font-semibold text-white shadow-[0_0_16px_rgba(139,92,246,0.35)] transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_0_24px_rgba(139,92,246,0.65)]"
+              >
+                Live demo
+                <ExternalLink className="size-3" />
+              </a>
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[0.72rem] font-semibold text-muted-foreground transition-colors duration-300 hover:border-white/30 hover:bg-white/10 hover:text-foreground"
+              >
+                Repo
+                <ArrowUpRight className="size-3" />
+              </a>
+            </div>
           ) : (
             <span className="inline-flex items-center gap-1.5 transition-colors group-hover:text-foreground">
               Repository
@@ -206,15 +217,41 @@ export function Projects() {
                       </dd>
                     </div>
                   </dl>
-                  <Button
-                    asChild
-                    className="relative z-10 mt-5 h-9 w-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.5)]"
-                  >
-                    <a href={featured.repo} target="_blank" rel="noreferrer">
-                      View repository
-                      <ArrowUpRight className="size-4" />
-                    </a>
-                  </Button>
+                  <div className="relative z-10 mt-5 flex flex-col gap-2">
+                    {featured.demo ? (
+                      <Button
+                        asChild
+                        className="h-9 w-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.5)]"
+                      >
+                        <a
+                          href={featured.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Live demo
+                          <ExternalLink className="size-4" />
+                        </a>
+                      </Button>
+                    ) : null}
+                    <Button
+                      asChild
+                      variant={featured.demo ? "outline" : "default"}
+                      className={
+                        featured.demo
+                          ? "h-9 w-full rounded-full"
+                          : "h-9 w-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.5)]"
+                      }
+                    >
+                      <a
+                        href={featured.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View repository
+                        <ArrowUpRight className="size-4" />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
