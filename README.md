@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Haanie — Portfolio
 
-## Getting Started
+A dark, animated developer portfolio built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4**, **shadcn/ui**, and **Framer Motion**.
 
-First, run the development server:
+Projects are pulled from my GitHub profile — [github.com/DefenceSteller](https://github.com/DefenceSteller).
+
+## ✨ Features
+
+- 🎯 Hero with animated rotating roles, gradient headline, status badge and GitHub avatar visual
+- 🌀 Infinite tech-stack marquee with hover pause
+- 💼 Featured project + responsive project grid (language dots, tech chips, repo/demo links)
+- 🧰 Skills grouped into Frontend / Backend & Data / Mobile / Tooling
+- ✉️ Contact section with copy-to-clipboard email and a mailto-based form (nothing stored)
+- 📱 Fully responsive with a sheet-based mobile menu
+- ⚡ Scroll progress bar, scroll-reveal animations, active-section nav highlighting
+- 🌗 Dark-only theme, custom grid + noise background, `prefers-reduced-motion` respected
+
+## 🛠 Stack
+
+| Layer     | Tech                                              |
+| --------- | ------------------------------------------------- |
+| Framework | Next.js 16 (App Router, Turbopack, Cache Components) |
+| Language  | TypeScript 5 (strict)                             |
+| Styling   | Tailwind CSS v4 + shadcn/ui (Radix)               |
+| Animation | Framer Motion                                     |
+| Icons     | lucide-react                                      |
+| Fonts     | Geist (body) + Space Grotesk (headings) via `next/font` |
+
+## 🚀 Getting Started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+npm run lint     # ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Project Structure
 
-## Learn More
+```text
+src/
+├── app/
+│   ├── layout.tsx        # fonts, metadata, dark theme, ambient background
+│   ├── page.tsx          # assembles all sections
+│   └── globals.css       # theme tokens, gradients, keyframes, utilities
+├── components/
+│   ├── hero.tsx          # animated hero
+│   ├── navbar.tsx        # fixed nav + active section + mobile sheet
+│   ├── tech-marquee.tsx  # scrolling stack strip
+│   ├── about.tsx         # bio + "what I do" cards
+│   ├── projects.tsx      # featured card + project grid
+│   ├── skills.tsx        # skill groups
+│   ├── contact.tsx       # contact links + form
+│   ├── footer.tsx
+│   ├── section-heading.tsx
+│   ├── reveal.tsx        # scroll-reveal wrapper
+│   ├── scroll-progress.tsx
+│   ├── icons.tsx         # GitHub / LinkedIn / X brand SVGs
+│   └── ui/               # shadcn/ui components
+└── lib/
+    └── data.ts           # ⭐ all content: profile, projects, skills
+```
 
-To learn more about Next.js, take a look at the following resources:
+## ✏️ Customizing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Everything content-related lives in **`src/lib/data.ts`**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Email** — set your address in `profile.email` (used by the contact form and links).
+2. **Name / role / bio** — edit the `profile` object.
+3. **Projects** — add, remove or reorder entries in `projects[]` (set `featured: true` for the big card, `demo` for live links).
+4. **Skills / marquee** — edit `skillGroups[]` and `marqueeItems[]`.
